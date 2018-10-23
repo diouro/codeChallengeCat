@@ -1,30 +1,24 @@
 <?php
-if (PHP_SAPI == 'cli-server') {
-    // To help the built-in PHP dev server, check if the request was actually for
-    // something which should probably be served as a static file
-    $url  = parse_url($_SERVER['REQUEST_URI']);
-    $file = __DIR__ . $url['path'];
-    if (is_file($file)) {
-        return false;
-    }
-}
 
-require __DIR__ . '/../vendor/autoload.php';
+// All file paths relative to root
+chdir(dirname(__DIR__));
 
+require 'vendor/autoload.php';
 session_start();
 
-// Instantiate the app
-$settings = require __DIR__ . '/../src/settings.php';
+$settings = require 'app/settings.php';
+
+// Instantiate Slim
 $app = new \Slim\App($settings);
 
-// Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
+require 'app/src/dependencies.php';
+require 'app/src/middleware.php';
 
-// Register middleware
-require __DIR__ . '/../src/middleware.php';
+// Register the routes
+require 'app/src/routes.php';
 
-// Register routes
-require __DIR__ . '/../src/routes.php';
+// Register the database connection with Eloquent
+$capsule = $app->getContainer()->get('capsule');
+$capsule->bootEloquent();
 
-// Run app
 $app->run();

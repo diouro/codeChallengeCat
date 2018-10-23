@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "94fa1831-7c6e-4182-bdc2-ed067a29bc40",
+		"name": "Catapult",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/api/public/users",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"public",
+						"users"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "All teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/api/public/teams",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"public",
+						"teams"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "Player wellness",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/api/public/wellness/1/6",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"public",
+						"wellness",
+						"1",
+						"6"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "Wellness - create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\": 1,\"sleep\":1,\"soreness\":0.5,\"fatigue\":-1}"
+				},
+				"url": {
+					"raw": "localhost/api/public/wellness",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"public",
+						"wellness"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wellness - update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"sleep\":0,\"soreness\":0.8,\"fatigue\":-1}"
+				},
+				"url": {
+					"raw": "localhost/api/public/wellness/2",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"public",
+						"wellness",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
