@@ -40,8 +40,11 @@ class CreateTables extends AbstractMigration
         // Create user table
         $table = $this->table('wellness');
         $table->addColumn('user_id', 'integer')
-              ->addColumn('first_name', 'string')
-              ->addColumn('last_name', 'string')
+              ->addColumn('sleep', 'float')
+              ->addColumn('soreness', 'float')
+              ->addColumn('fatigue', 'float')
+              ->addColumn('overall', 'float')
+              ->addColumn('recorded_at', 'timestamp')
               ->create();
     }
 
