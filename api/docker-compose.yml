@@ -5,6 +5,15 @@ volumes:
         driver: local
 
 services:
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: catapult
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+        ports:
+            - "3306:3306"
     slim:
         image: php:7-alpine
         working_dir: /var/www
