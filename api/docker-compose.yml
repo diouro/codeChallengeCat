@@ -14,14 +14,25 @@ services:
             MYSQL_PASSWORD: root
         ports:
             - "3306:3306"
-    slim:
-        image: php:7-alpine
+    php:
+        build: .
         working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
-        environment:
-            docker: "true"
+        volumes_from:
+            - code
+    web:
+        image: nginx
         ports:
-            - 8001:8080
+            - "80:80"
+            - "443:443"
+        links:
+            - php
+            - db
         volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+            - ./sites:/etc/nginx/conf.d
+            - ./conf/nginx.conf:/etc/nginx/nginx.conf
+        volumes_from:
+            - code
+    code:
+        image: busybox
+        volumes:
+            - ./:/var/www

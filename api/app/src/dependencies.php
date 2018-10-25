@@ -18,8 +18,3 @@ $container['csrf'] = function ($c) {
     });
     return $guard;
 };
-
-// controller
-$container['Controller\UserController'] = function () {
-    return new Controller\UserController();
-};
