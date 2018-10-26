@@ -11,6 +11,11 @@ $settings = require 'app/settings.php';
 // Instantiate Slim
 $app = new \Slim\App($settings);
 
+$app->add(new Tuupola\Middleware\JwtAuthentication([
+    "secret" => getenv("JWT_SECRET"),
+    "ignore" => ["/token", "/ping"]
+]));
+
 require 'app/src/dependencies.php';
 require 'app/src/middleware.php';
 
