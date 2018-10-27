@@ -15,7 +15,7 @@ $app->group('/api/v1', function(){
     
 });
 
-$app->get('/', function(){
-    echo "Please use the routes availables.";
+$app->get('/', function($request,$response,$args){
+    return $this->renderer->render($response, 'endpoints.phtml', $args);
 });
 

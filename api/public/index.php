@@ -11,13 +11,6 @@ $settings = require 'app/settings.php';
 // Instantiate Slim
 $app = new \Slim\App($settings);
 
-// Inject dependance
-$container = $app->getContainer();
-$container['config'] = function($settings)
-{
-    return $settings['jwt'];
-};
-
 $app->add(new Tuupola\Middleware\JwtAuthentication([
     "secret"    => $settings['jwt']['secreat'],
     "path"      => ["/api"],
