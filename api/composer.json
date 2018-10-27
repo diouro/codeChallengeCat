@@ -45,8 +45,7 @@
     },
     "scripts": {
         "test": [
-            "php vendor/squizlabs/php_codesniffer/scripts/phpcs",
-            "php vendor/phpunit/phpunit/phpunit"
+            "./vendor/bin/phpunit tests/CatapultTest.php"
         ]
     }
 }
