@@ -4,7 +4,7 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Valitron\Validator;
-use Model\Roles;
+use Model\Role;
 
 final class TeamUser extends Model
 {
@@ -34,7 +34,7 @@ final class TeamUser extends Model
         {
             $coach = self::where('user_id','=',$coach_id)
             ->where('team_id','=',$pt->team_id)
-            ->where('role_id','=',Roles::$type['coach'])
+            ->where('role_id','=',Role::$type['coach'])
             ->first();
 
             if($coach)

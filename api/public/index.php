@@ -11,9 +11,17 @@ $settings = require 'app/settings.php';
 // Instantiate Slim
 $app = new \Slim\App($settings);
 
+// Inject dependance
+$container = $app->getContainer();
+$container['config'] = function($settings)
+{
+    return $settings['jwt'];
+};
+
 $app->add(new Tuupola\Middleware\JwtAuthentication([
-    "secret" => getenv("JWT_SECRET"),
-    "ignore" => ["/token", "/ping"]
+    "secret"    => $settings['jwt']['secreat'],
+    "path"      => ["/api"],
+    "ignore"    => ["/api/v1/user/token", "/api/v1/ping"]
 ]));
 
 require 'app/src/dependencies.php';
@@ -23,7 +31,7 @@ require 'app/src/middleware.php';
 require 'app/src/routes.php';
 
 // Register the database connection with Eloquent
-$capsule = $app->getContainer()->get('capsule');
+$capsule = $container->get('capsule');
 $capsule->bootEloquent();
 
 $app->run();

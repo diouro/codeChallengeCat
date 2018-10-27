@@ -43,8 +43,7 @@ final class WellnessController
         
         if(array_key_exists('user_id',$args))
         {
-
-            $find = Wellness::find($args['user_id']);
+            $find = Wellness::where('user_id','=',$args['user_id'])->first();            
             if(!$find)
             {
                 $result = Wellness::create($args);
@@ -70,14 +69,14 @@ final class WellnessController
     public function update($request, $response,$args)
     {
         
-        if($args['player_id'])
+        if(array_key_exists('user_id',$args))
         {
             
-            $find = Wellness::find($args['player_id']);
+            $find = Wellness::find($args['user_id']);
             if($find)
             {
                 $args = json_decode($request->getBody(),true);
-                $result = Wellness::update($find,$args);
+                $result = Wellness::updateWellness($find->toArray(),$args);
                 if($result)
                 {
                     return $response->withJson(['status' => true, 'message' => 'Player wellness updated successful']);

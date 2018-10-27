@@ -59,12 +59,12 @@ final class Wellness extends Model
      *
      * @param  Array $data Data to be validated
      */
-    public function update($wellness,$data)
+    public function updateWellness($wellness,$data)
     {
         
         try
         {
-            
+            $wellness = self::find($wellness['id']);
             $wellness->sleep = $data['sleep'];
             $wellness->soreness = $data['soreness'];
             $wellness->fatigue = $data['fatigue'];
