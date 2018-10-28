@@ -18,7 +18,7 @@ final class UserController
         return $response->withJson(User::get()->toArray());
     }
 
-    public function __construct(ContainerInterface $container) 
+    public function __construct(ContainerInterface $container = null) 
     {
         $this->container = $container;
     }

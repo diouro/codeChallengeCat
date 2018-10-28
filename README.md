@@ -3,12 +3,24 @@ Author: Paulo Goncalves
 Date: 23/10/2018
 
 ## Project technology
-Slimframework: https://www.slimframework.com
 
-Libraries:
+PHP Slimframework: https://www.slimframework.com
+Docker: https://www.docker.com/
+
+* Libraries:
 Poignant : https://packagist.org/packages/mossengine/poignant
+PHPUnit: https://github.com/sebastianbergmann/phpunit
 
 ## Running the project
+
+Make sure you are on the project directory: `cd api`
+
+* Run all setup in one:
+```
+composer run setup
+```
+
+`OR`
 
 * Run installation
 ```
@@ -17,7 +29,6 @@ composer install
 
 * Run the server
 ```
-cd api
 docker-compose up
 ```
 Option: If you want to change the port other than 8001, change docker-composer.yml 
@@ -44,3 +55,10 @@ Please visit the http://localhost to view all availables endpoints.
 ## Postman
 
 A postman colletion is available to use to test the project
+
+## Unit Test
+
+Execulte the command to run the test:
+```
+composer run test
+```
