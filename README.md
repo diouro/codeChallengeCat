@@ -6,6 +6,7 @@ Date: 23/10/2018
 
 PHP Slimframework: https://www.slimframework.com
 Docker: https://www.docker.com/
+Composer: https://getcomposer.org/
 
 * Libraries:
 Poignant : https://packagist.org/packages/mossengine/poignant
@@ -13,7 +14,14 @@ PHPUnit: https://github.com/sebastianbergmann/phpunit
 
 ## Running the project
 
-Make sure you are on the project directory: `cd api`
+You Must have the following installed to have this project running:
+- Composer
+- Docker
+
+A few things to consider:
+- Make sure that port 3306 and 80 is not in use, or, change them as you wish on Dockerfile.
+- Make sure you are on the project directory: `cd api`
+- Depending on the internet speed, you might have a timeout running the commands bellow.
 
 * Run all setup in one:
 ```
@@ -54,7 +62,7 @@ Please visit the http://localhost to view all availables endpoints.
 
 ## Postman
 
-A postman colletion is available to use to test the project
+A postman colletion and environment is available to use to test the project
 
 ## Unit Test
 
